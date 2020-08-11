@@ -1,25 +1,30 @@
 Arguments: 
-  /usr/bin/node /usr/bin/yarn start
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js init
 
 PATH: 
-  /home/gfaraujo/.bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl
+  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\PuTTY\;C:\Program Files\Git\cmd;C:\Users\lucas\.windows-build-tools\python27\;C:\Users\lucas\AppData\Local\Programs\Python\Python38-32\Scripts\;C:\Users\lucas\AppData\Local\Programs\Python\Python38-32\;C:\Users\lucas\AppData\Local\Microsoft\WindowsApps;C:\Users\lucas\AppData\Roaming\npm;C:\Users\lucas\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\lucas\AppData\Local\Yarn\bin;C:\Program Files\Docker Toolbox
 
 Yarn version: 
   1.22.4
 
 Node version: 
-  14.7.0
+  13.12.0
 
 Platform: 
-  linux x64
+  win32 x64
 
 Trace: 
-  SyntaxError: /home/gfaraujo/code/backend-eventos/package.json: Unexpected token } in JSON at position 257
-      at JSON.parse (<anonymous>)
-      at /usr/lib/node_modules/yarn/lib/cli.js:1625:59
-      at Generator.next (<anonymous>)
-      at step (/usr/lib/node_modules/yarn/lib/cli.js:310:30)
-      at /usr/lib/node_modules/yarn/lib/cli.js:321:13
+  Error: canceled
+      at Interface.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:137008:13)
+      at Interface.emit (events.js:315:20)
+      at Interface._ttyWrite (readline.js:873:16)
+      at ReadStream.onkeypress (readline.js:213:10)
+      at ReadStream.emit (events.js:315:20)
+      at emitKeys (internal/readline/utils.js:335:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (readline.js:1140:36)
+      at ReadStream.emit (events.js:315:20)
+      at addChunk (_stream_readable.js:297:12)
 
 npm manifest: 
   {
@@ -31,7 +36,7 @@ npm manifest:
       "start": "tsnd --transpile-only --respawn --ignore-watch node_modules src/server.ts"
     },
     "dependencies": {
-      "express": "^4.17.1",
+      "express": "^4.17.1"
       
     },
     "devDependencies": {
