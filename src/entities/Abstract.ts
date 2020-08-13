@@ -1,4 +1,6 @@
 import { User } from "./User";
+import {Evaluation} from "./Evaluation";
+import { Author } from "./Author";
 
 export class Abstract {
    
@@ -8,6 +10,8 @@ export class Abstract {
     public text: string;
     public keywords: string;
     public user: User;
+    public evaluations: Evaluation[];
+    public authors: Author[];
     
   
     constructor(props: Omit<Abstract, 'id'>, id?: string) {

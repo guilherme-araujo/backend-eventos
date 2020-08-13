@@ -6,6 +6,9 @@
 import { Country } from "./Country";
 import { State } from "./State";
 import { City } from "./City";
+import { RegistrationType } from "./RegistrationType";
+import { Payment } from "./Payment";
+import { Abstract } from "./Abstract";
 
 export class User {
    
@@ -20,6 +23,9 @@ export class User {
   public state: State;
   public city: City;
   public address: string;
+  public registrationType: RegistrationType;
+  public payments: Payment[];
+  public abstracts: Abstract[];
 
   constructor(props: Omit<User, 'id'>, id?: string) {
     Object.assign(this, props);
