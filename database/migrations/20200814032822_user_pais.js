@@ -13,5 +13,5 @@ exports.down = function(knex) {
 //comando para executar migrações:
 //npx knex migrate:latest
 
-//comando usado para juntar o db.default.sql com o database: (windows)
+//comando usado para juntar o db.default.sql com o database: (windows/powershell)
 //sqlite3 database.sqlite3 -init db.default.sql
