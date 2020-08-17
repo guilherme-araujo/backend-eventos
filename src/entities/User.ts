@@ -1,4 +1,4 @@
-//import { uuid } from 'uuidv4'
+import { v4 } from 'uuid'
 //Verificar geração de ids através do sqlite. Como fazer na geração de um novo usuário?
 //Após ser gerado, buscar o id a partir do banco.
 //Pode valer a pena usar essa estratégia do uuid para ter um id independente do banco?
@@ -25,7 +25,7 @@ export class User {
     Object.assign(this, props);
 
     if (!id) {
-      //this.id = uuid();
+      this.id = v4();
     }
   }
 }
