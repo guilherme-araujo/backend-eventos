@@ -1,12 +1,19 @@
 
 exports.up = function(knex) {
-    return knex.schema.createTable("user_cidade",table=>{
+    return knex.schema.createTable("user_city",table=>{
         table.increments('id').primary();
-        table.string('nome').notNullable();
-        table.string('id_estado_id').notNullable();
+        table.string('name').notNullable();
+        
+        table.integer('state_id')
+    .notNullable()
+    .references('id')
+    .inTable('user_state')
+    .onUpdate('CASCADE')
+    .onDelete('CASCADE');
+    
     });
 };
 
 exports.down = function(knex) {
-    return knex.schema.dropTableIfExists("user_cidade");  
+    return knex.schema.dropTableIfExists("user_city");  
 };

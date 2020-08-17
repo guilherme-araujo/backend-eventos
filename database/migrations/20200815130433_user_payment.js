@@ -13,10 +13,10 @@ exports.up = function(knex) {
     .onDelete('CASCADE');
 
         //foreign key do status de pagamento
-        table.integer('payment_situation')
+        table.integer('payment_situation_id')
     .notNullable()
     .references('id')
-    .inTable('user_situacao_de_pagamento')
+    .inTable('user_payment_situation')
     .onUpdate('CASCADE')
     .onDelete('CASCADE');
     

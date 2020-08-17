@@ -4,10 +4,10 @@ exports.up = function(knex) {
         table.string('evaluation_comment');
 
         //foreign key do status da avaliação
-        table.integer('avaliation_status_id')
+        table.integer('evaliation_status_id')
     .notNullable()
     .references('id')
-    .inTable('user_status_avaliacoes')
+    .inTable('user_evaluation_status')
     .onUpdate('CASCADE')
     .onDelete('CASCADE');
     

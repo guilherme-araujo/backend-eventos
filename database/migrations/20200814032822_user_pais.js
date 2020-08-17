@@ -1,14 +1,14 @@
 
 exports.up = function(knex) {
-    return knex.schema.createTable("user_pais",table=>{
+    return knex.schema.createTable("user_country",table=>{
         table.increments('id').primary();
-        table.string('nome').notNullable();
-        table.string('sigla').notNullable();
+        table.string('name').notNullable();
+        table.string('abbreviation').notNullable();
     });
 };
 
 exports.down = function(knex) {
-    return knex.schema.dropTableIfExists("user_pais");  
+    return knex.schema.dropTableIfExists("user_country");  
 };
 //comando para executar migrações:
 //npx knex migrate:latest
