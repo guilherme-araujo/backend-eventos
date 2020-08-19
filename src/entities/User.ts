@@ -24,10 +24,13 @@ export class User {
   public city: City;
   public address: string;
   public registrationType: RegistrationType;
-  public payments: Payment[];
-  public abstracts: Abstract[];
+  public payments: Payment[] = [];
+  public abstracts: Abstract[] = [];
 
-  constructor(props: Omit<User, 'id'>, id?: string) {
+
+
+  constructor(props: Omit<User, 'id'|'payments'|'abstracts'>, id?: string) {
+    
     Object.assign(this, props);
 
     if (!id) {
