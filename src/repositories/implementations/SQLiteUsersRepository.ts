@@ -25,7 +25,7 @@ export class SQLiteUsersRepository implements IUsersRepository {
       "state_id": 1,
       "country_id": 1,
       "registration_type_id": 1
-    });
+    }).then(function(){});
     this.users.push(user);
   }
 }
