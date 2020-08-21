@@ -1,11 +1,14 @@
 import { ICitiesRepository } from "../ICitiesRepository";
-import db  from '../../../database/connection'
+const knex = require('knex')('development')
 
 export class SQLiteCitiesRepository implements ICitiesRepository {
-  getAllCities(db){
-    return db
+  
+  getAllCities(db){  
+    return knex(db)
       .select("*")
       .from("user_city")
       .then(rows => rows);
+  
   }
+
 }
