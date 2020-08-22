@@ -19,12 +19,11 @@ export class SQLiteUsersRepository implements IUsersRepository {
       "course" : user.course,
       "adress" : user.address, 
       "phone" : user.phone,
-      //foreign keys (city, state, country, registrationType)
-      //todo: criar funções para associar as foreign keys
-      "city_id": 1,
-      "state_id": 1,
-      "country_id": 1,
-      "registration_type_id": 1
+      //foreign keys
+      "city_id": user.city.id,
+      "state_id": user.state.id,
+      "country_id": user.country.id,
+      "registration_type_id": user.registrationType.id
     }).then(function(){});
     this.users.push(user);
   }
