@@ -1,14 +1,14 @@
 import { ICountriesRepository } from "../ICountriesRepository";
 import db from '../../../database/connection';
+import { Country } from "../../entities/Country";
 
 export class SQLiteCountriesRepository implements ICountriesRepository {
   
-  getAllCountries(){  
+  async getAllCountries(): Promise<Country[]>{  
     return db
-      .select("*")
-      .from("user_country")
+      .select()
+      .from<Country>("user_country")
       .then(rows => rows);
-  
   }
 
 }

@@ -1,3 +1,5 @@
+import { Country } from "../entities/Country";
+
 export interface ICountriesRepository {
-    getAllCountries()
+    getAllCountries(): Promise<Country[]>
 }

@@ -1,3 +1,5 @@
+import { State } from "../entities/State";
+
 export interface IStatesRepository {
-    getAllStates()
+    getAllStates(): Promise<State[]>;
 }

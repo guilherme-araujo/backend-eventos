@@ -1,3 +1,5 @@
+import { City } from "../entities/City";
+
 export interface ICitiesRepository {
-    getAllCities()
+    getAllCities(): Promise<City[]>
 }

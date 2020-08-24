@@ -3,10 +3,19 @@ import { User } from "../../entities/User";
 import db from '../../../database/connection';
 
 export class SQLiteUsersRepository implements IUsersRepository {
-  private users: User[] = [];
+  
+  async getAllUsers(): Promise<User[]> {
+    return db.select().from<User>('users').then(rows => rows);
+  }
+
+  //testar se essa função funciona como esperado
+  private users: Promise<User[]> = this.getAllUsers();
 
   async findByEmail(email: string): Promise<User> {
-    const user = this.users.find(user => user.email === email);
+    
+    const usersArray: User[] = await Promise.all(await this.users);
+
+    const user = usersArray.find(user => user.email === email);
 
     return user;
   }
@@ -25,6 +34,5 @@ export class SQLiteUsersRepository implements IUsersRepository {
       "country_id": user.country.id,
       "registration_type_id": user.registrationType.id
     }).then(function(){});
-    this.users.push(user);
   }
 }
