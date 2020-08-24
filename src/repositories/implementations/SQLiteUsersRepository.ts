@@ -9,11 +9,9 @@ export class SQLiteUsersRepository implements IUsersRepository {
   }
 
   //testar se essa função funciona como esperado
-  private users: Promise<User[]> = this.getAllUsers();
-
   async findByEmail(email: string): Promise<User> {
     
-    const usersArray: User[] = await Promise.all(await this.users);
+    const usersArray: User[] = await Promise.all(await this.getAllUsers());
 
     const user = usersArray.find(user => user.email === email);
 
