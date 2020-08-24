@@ -14,7 +14,7 @@ export class Abstract {
     public authors: Author[];
     
   
-    constructor(props: Omit<Abstract, 'id'>, id?: string) {
+    constructor(props: Omit<Abstract, 'id'|'authors'|'evaluations'>, id?: string) {
       Object.assign(this, props);
   
       if (!id) {

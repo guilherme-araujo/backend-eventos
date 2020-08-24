@@ -1,3 +1,3 @@
 export interface ICitiesRepository {
-    getAllCities(db)
+    getAllCities()
 }
