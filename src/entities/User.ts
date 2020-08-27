@@ -2,6 +2,7 @@ import { v4 } from 'uuid'
 //Verificar geração de ids através do sqlite. Como fazer na geração de um novo usuário?
 //Após ser gerado, buscar o id a partir do banco.
 //Pode valer a pena usar essa estratégia do uuid para ter um id independente do banco?
+//Até o momento está valendo, contanto que não deixe o sistema mais lento
 
 import { Country } from "./Country";
 import { State } from "./State";
