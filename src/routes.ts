@@ -5,6 +5,7 @@ import { createAbstractController } from "./useCases/CreateAbstract";
 import { SQLiteCountriesRepository } from "./repositories/implementations/SQLiteCountriesRepository";
 import { SQLiteStatesRepository } from "./repositories/implementations/SQLiteStatesRepository";
 import { SQLiteCitiesRepository } from "./repositories/implementations/SQLiteCitiesRepository";
+import { createEvaluationController } from "./useCases/CreateEvaluation";
 
 const router = Router()
 
@@ -18,6 +19,10 @@ router.post('/users/payments', (request, response) => {
 
 router.post('/abstracts',(request,response)=>{
   return createAbstractController.handle(request,response);
+});
+
+router.post('/abstracts/evaluations', (request, response) => {
+  return createEvaluationController.handle(request, response);
 });
 
 router.get('/cities', (request, response) => {
