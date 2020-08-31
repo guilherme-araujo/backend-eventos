@@ -4,7 +4,7 @@ export class City {
   
     public name: string;
     public abbreviation: string;
-  
+    
     constructor(props: Omit<City, 'id'>, id?: string) {
       Object.assign(this, props);
   

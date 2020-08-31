@@ -1,5 +1,5 @@
 import { City } from "../entities/City";
 
 export interface ICitiesRepository {
-    getAllCities(): Promise<City[]>
+    getAllCities(id: string): Promise<City[]>
 }
