@@ -1,17 +1,16 @@
 exports.up = function(knex) {
-    return knex.schema.createTable("user_evaluation",table=>{
+    return knex.schema.createTable("abstract-author",table=>{
         table.increments('id').primary();
-        table.string('observation');
 
-        //foreign key do status da avaliação
-        table.integer('evaliation_status_id')
+        //foreign key do author
+        table.integer('author_id')
     .notNullable()
     .references('id')
-    .inTable('user_evaluation_status')
+    .inTable('author')
     .onUpdate('CASCADE')
     .onDelete('CASCADE');
 
-    //foreign key do resumo que está sendo avaliado
+    //foreign key do resumo
         table.integer('abstract_id')
     .notNullable()
     .references('id')
@@ -23,5 +22,5 @@ exports.up = function(knex) {
 };
 
 exports.down = function(knex) {
-    return knex.schema.dropTableIfExists("user_evaluation");  
+    return knex.schema.dropTableIfExists("abstract-author");  
 };

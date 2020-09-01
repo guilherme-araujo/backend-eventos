@@ -7,7 +7,7 @@ export class Author {
     public name: string;
     public email: string;
     public institution: Institution;
-    public abbreviation: string;
+    //public abbreviation: string; 
   
     constructor(props: Omit<Author, 'id'>, id?: string) {
       Object.assign(this, props);

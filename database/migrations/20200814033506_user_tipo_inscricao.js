@@ -5,7 +5,7 @@ exports.up = function(knex) {
         table.increments('id').primary();
         table.string('type').notNullable();
         table.integer('value').notNullable();
-        table.bool('status').notNullable();
+        table.bool('active').notNullable();
     });
 };
 

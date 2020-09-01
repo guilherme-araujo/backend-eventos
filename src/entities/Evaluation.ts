@@ -7,6 +7,7 @@ export class Evaluation {
   
     public abstract: Abstract;
     public status: EvaluationStatus;
+    public observation?: String;
   
     constructor(props: Omit<Evaluation, 'id'>, id?: string) {
       Object.assign(this, props);
