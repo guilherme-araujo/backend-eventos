@@ -25,11 +25,11 @@ router.post('/abstracts/evaluations', (request, response) => {
   return createEvaluationController.handle(request, response);
 });
 
-router.get('/cities/:id', (request, response) => {
+router.get('/cities', (request, response) => {
   
   const cidades = new SQLiteCitiesRepository
   
-  cidades.getAllCities(request.params.id).then(data => {
+  cidades.getAllCities(request.query.state as string).then(data => {
     response.send(data)
   })
 });
