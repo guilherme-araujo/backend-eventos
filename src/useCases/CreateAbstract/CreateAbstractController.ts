@@ -23,9 +23,5 @@ export class CreateAbstractController {
               message: err.message || 'Unexpected error.'
         })
     }
-
-
-        return response.status(201).send();  
-    }
-
+}
 }
