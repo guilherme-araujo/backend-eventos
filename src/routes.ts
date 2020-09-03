@@ -7,13 +7,18 @@ import { SQLiteStatesRepository } from "./repositories/implementations/SQLiteSta
 import { SQLiteCitiesRepository } from "./repositories/implementations/SQLiteCitiesRepository";
 import { createEvaluationController } from "./useCases/CreateEvaluation";
 import { linkAbstractAuthorController } from "./useCases/linkAbstractAuthor";
+import { createAuthorController } from "./useCases/CreateAuthor";
+import { createInstitutionController } from "./useCases/CreateInstitution";
+import { SQLiteAuthorsRepository } from "./repositories/implementations/SQLiteAuthorsRepository";
+import { SQLiteInstitutionsRepository } from "./repositories/implementations/SQLiteInstitutionsRepository";
+
 const router = Router()
 
 router.post('/users', (request, response) => {
   return createUserController.handle(request, response);
 });
 
-router.post('/users/payments', (request, response) => {
+router.post('/payments', (request, response) => {
   return createPaymentController.handle(request, response);
 });
 
@@ -25,8 +30,34 @@ router.post('/linkAbstractAuthor',(request,response)=>{
   return linkAbstractAuthorController.handle(request,response);
 })
 
-router.post('/abstracts/evaluations', (request, response) => {
+router.post('/evaluations', (request, response) => {
   return createEvaluationController.handle(request, response);
+});
+
+router.post('/authors', (request, response) => {
+  return createAuthorController.handle(request, response);
+});
+
+router.get('/authors', (request, response) => {
+  
+  const autores = new SQLiteAuthorsRepository
+  
+  autores.getAllAuthors().then(data => {
+    response.send(data)
+  })
+});
+
+router.post('/institutions', (request, response) => {
+  return createInstitutionController.handle(request, response);
+});
+
+router.get('/institutions', (request, response) => {
+  
+  const instituicoes = new SQLiteInstitutionsRepository
+  
+  instituicoes.getAllInstitutions().then(data => {
+    response.send(data)
+  })
 });
 
 router.get('/cities', (request, response) => {

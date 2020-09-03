@@ -5,9 +5,9 @@ import db from '../../../database/connection';
 export class SQLiteEvaluationsRepository implements IEvaluationsRepository {
   async save(evaluation: Evaluation): Promise<void> {
     db('user_evaluation').insert({
-      "abstract": evaluation.abstract.id,
-      "status": evaluation.status.status,
-      "observation": evaluation.observation
+      "observation": evaluation.observation,
+      "abstract_id": evaluation.abstract.id,
+      "evaluation_status_id": evaluation.status.id   
     }).then(function(){});
   }
 }
