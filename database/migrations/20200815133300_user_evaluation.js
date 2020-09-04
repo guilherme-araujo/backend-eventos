@@ -4,7 +4,7 @@ exports.up = function(knex) {
         table.string('observation');
 
         //foreign key do status da avaliação
-        table.integer('evaliation_status_id')
+        table.integer('evaluation_status_id')
     .notNullable()
     .references('id')
     .inTable('user_evaluation_status')

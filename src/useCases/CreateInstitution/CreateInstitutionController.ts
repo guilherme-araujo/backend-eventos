@@ -1,19 +1,18 @@
 import { Request, Response } from "express";
-import { CreateEvaluationUseCase } from "./CreateEvaluationUseCase";
+import { CreateInstitutionUseCase } from "./CreateInstitutionUseCase";
 
-export class CreateEvaluationController {
+export class CreateInstitutionController {
   constructor(
-    private createEvaluationUseCase: CreateEvaluationUseCase,
+    private createInstitutionUseCase: CreateInstitutionUseCase,
   ) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const { abstract, status, observation} = request.body;
+    const { name, abbreviation} = request.body;
 
     try {
-      await this.createEvaluationUseCase.execute({
-        abstract,
-        status,
-        observation
+      await this.createInstitutionUseCase.execute({
+        name,
+        abbreviation
       })
   
       return response.status(201).send();  

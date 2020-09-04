@@ -1,19 +1,19 @@
 import { Request, Response } from "express";
-import { CreateEvaluationUseCase } from "./CreateEvaluationUseCase";
+import { CreateAuthorUseCase } from "./CreateAuthorUseCase";
 
-export class CreateEvaluationController {
+export class CreateAuthorController {
   constructor(
-    private createEvaluationUseCase: CreateEvaluationUseCase,
+    private createAuthorUseCase: CreateAuthorUseCase,
   ) {}
 
   async handle(request: Request, response: Response): Promise<Response> {
-    const { abstract, status, observation} = request.body;
+    const { name, email, institution} = request.body;
 
     try {
-      await this.createEvaluationUseCase.execute({
-        abstract,
-        status,
-        observation
+      await this.createAuthorUseCase.execute({
+        name,
+        email,
+        institution
       })
   
       return response.status(201).send();  
