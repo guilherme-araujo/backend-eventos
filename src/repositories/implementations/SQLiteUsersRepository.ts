@@ -1,5 +1,6 @@
 import { IUsersRepository } from "../IUsersRepository";
 import { User } from "../../entities/User";
+import bcrypt from "bcryptjs";
 import db from '../../../database/connection';
 
 export class SQLiteUsersRepository implements IUsersRepository {
@@ -19,10 +20,11 @@ export class SQLiteUsersRepository implements IUsersRepository {
   }
 
   async save(user: User): Promise<void> {
+
     db('users').insert({
       "name": user.name,
       "email": user.email,
-      "password": user.password,
+      "password": bcrypt.hashSync(user.password, 10),
       "course" : user.course,
       "adress" : user.address, 
       "phone" : user.phone,

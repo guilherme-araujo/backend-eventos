@@ -11,8 +11,13 @@ import { createAuthorController } from "./useCases/CreateAuthor";
 import { createInstitutionController } from "./useCases/CreateInstitution";
 import { SQLiteAuthorsRepository } from "./repositories/implementations/SQLiteAuthorsRepository";
 import { SQLiteInstitutionsRepository } from "./repositories/implementations/SQLiteInstitutionsRepository";
+import { loginController } from "./useCases/Login";
 
 const router = Router()
+
+router.post('/login', (request, response) => {
+  return loginController.handle(request, response);
+})
 
 router.post('/users', (request, response) => {
   return createUserController.handle(request, response);
