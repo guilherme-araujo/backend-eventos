@@ -25,5 +25,16 @@ export class LoginUseCase {
         return user;
 
     }
+    
+    async refreshUser(email: string){
+        const user = await this.usersRepository.findByEmail(email);
+
+        if(!user){
+            throw new Error('User not found');
+        }
+        user.password = ''
+        return user;
+
+    }
 
 }

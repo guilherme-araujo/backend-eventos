@@ -15,13 +15,22 @@ import { loginController } from "./useCases/Login";
 
 const router = Router()
 
+
 router.post('/login', (request, response) => {
   return loginController.handle(request, response);
+})
+
+router.post('/token', (request, response) => {
+  return loginController.newToken(request, response);
 })
 
 router.post('/users', (request, response) => {
   return createUserController.handle(request, response);
 });
+
+router.get('/hidden', loginController.authenticateJWT, (request, response) => {
+  response.send("Ok!")
+})
 
 router.post('/payments', (request, response) => {
   return createPaymentController.handle(request, response);
