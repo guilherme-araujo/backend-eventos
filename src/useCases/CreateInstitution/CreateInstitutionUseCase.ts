@@ -8,9 +8,18 @@ export class CreateInstitutionUseCase {
   ) {}
 
   async execute(data: ICreateInstitutionRequestDTO) {
+    
+    const institutionAlreadyExists = await this.institutionsRepository.findByNameAndAbbreviation(data.name, data.abbreviation);
+
+    if (institutionAlreadyExists) {
+      throw new Error('Institution already exists.')
+    }
+    
     const institution = new Institution(data);
 
     await this.institutionsRepository.save(institution);
 
   }
+
+
 }

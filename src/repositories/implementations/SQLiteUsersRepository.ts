@@ -8,7 +8,7 @@ export class SQLiteUsersRepository implements IUsersRepository {
     return db.select().from<User>('users').then(rows => rows);
   }
 
-  //testar se essa função funciona como esperado
+  
   async findByEmail(email: string): Promise<User> {
     
     const usersArray: User[] = await Promise.all(await this.getAllUsers());

@@ -9,6 +9,13 @@ export class CreateAuthorUseCase {
   ) {}
 
   async execute(data: ICreateAuthorRequestDTO) {
+    
+    const authorAlreadyExists = await this.authorsRepository.findByNameAndEmail(data.name, data.email);
+
+    if (authorAlreadyExists) {
+      throw new Error('Author already exists.')
+    }
+    
     const author = new Author(data);
 
     await this.authorsRepository.save(author);

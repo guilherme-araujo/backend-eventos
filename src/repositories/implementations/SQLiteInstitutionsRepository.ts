@@ -21,5 +21,14 @@ export class SQLiteInstitutionsRepository implements IInstitutionsRepository {
       .from<Institution>("user_institution")
       .then(rows => rows);
   }
+
+  async findByNameAndAbbreviation(name: string, abbreviation: string): Promise<Institution> {
+    
+    const institutionsArray: Institution[] = await Promise.all(await this.getAllInstitutions());
+
+    const institution = institutionsArray.find(institution => institution.name === name && institution.abbreviation === abbreviation);
+
+    return institution;
+  }
   
 }
