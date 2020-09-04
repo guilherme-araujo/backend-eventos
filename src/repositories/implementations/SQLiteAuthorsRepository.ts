@@ -19,4 +19,13 @@ export class SQLiteAuthorsRepository implements IAuthorsRepository {
       .then(rows => rows);
   }
   
+  async findByNameAndEmail(name: string, email: string): Promise<Author> {
+    
+    const authorsArray: Author[] = await Promise.all(await this.getAllAuthors());
+
+    const author = authorsArray.find(author => author.email === email && author.name === name);
+
+    return author;
+  }
+  
 }
