@@ -5865,7 +5865,7 @@ INSERT INTO 'user_titulacao'('id', 'titulo') VALUES
 ('4', "PhD"),
 ('5', "Other");                                     
 */
-INSERT INTO 'user_registration_type'('id', 'type', 'value', 'status') VALUES
+INSERT INTO 'user_registration_type'('id', 'type', 'value', 'active') VALUES
 ('1', "Undergraduate Students", 50, 1),
 ('2', "Graduate Students", 100, 1),
 ('3', "Professionals", 250, 1); 
