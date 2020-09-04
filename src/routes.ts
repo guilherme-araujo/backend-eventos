@@ -1,17 +1,23 @@
 import { Router } from "express";
+
+// controllers
 import { createUserController } from "./useCases/CreateUser";
 import { createPaymentController } from "./useCases/CreatePayment";
 import { createAbstractController } from "./useCases/CreateAbstract";
-import { SQLiteCountriesRepository } from "./repositories/implementations/SQLiteCountriesRepository";
-import { SQLiteStatesRepository } from "./repositories/implementations/SQLiteStatesRepository";
-import { SQLiteCitiesRepository } from "./repositories/implementations/SQLiteCitiesRepository";
 import { createEvaluationController } from "./useCases/CreateEvaluation";
 import { linkAbstractAuthorController } from "./useCases/linkAbstractAuthor";
 import { createAuthorController } from "./useCases/CreateAuthor";
 import { createInstitutionController } from "./useCases/CreateInstitution";
+
+// repositórios
 import { SQLiteAuthorsRepository } from "./repositories/implementations/SQLiteAuthorsRepository";
 import { SQLiteInstitutionsRepository } from "./repositories/implementations/SQLiteInstitutionsRepository";
 import { loginController } from "./useCases/Login";
+import { SQLitePaymentSituationsRepository } from "./repositories/implementations/SQLitePaymentSituationsRepository";
+import { SQLiteEvaluationStatusRepository } from "./repositories/implementations/SQLiteEvaluationStatus";
+import { SQLiteCountriesRepository } from "./repositories/implementations/SQLiteCountriesRepository";
+import { SQLiteStatesRepository } from "./repositories/implementations/SQLiteStatesRepository";
+import { SQLiteCitiesRepository } from "./repositories/implementations/SQLiteCitiesRepository";
 
 const router = Router()
 
@@ -36,6 +42,15 @@ router.post('/payments', (request, response) => {
   return createPaymentController.handle(request, response);
 });
 
+router.get('/situations', (request, response) => {
+  
+  const situacoes = new SQLitePaymentSituationsRepository
+  
+  situacoes.getAllPaymentSituations().then(data => {
+    response.send(data)
+  })
+});
+
 router.post('/abstracts',(request,response)=>{
   return createAbstractController.handle(request,response);
 });
@@ -46,6 +61,15 @@ router.post('/linkAbstractAuthor',(request,response)=>{
 
 router.post('/evaluations', (request, response) => {
   return createEvaluationController.handle(request, response);
+});
+
+router.get('/status', (request, response) => {
+  
+  const status = new SQLiteEvaluationStatusRepository
+  
+  status.getAllEvaluationStatus().then(data => {
+    response.send(data)
+  })
 });
 
 router.post('/authors', (request, response) => {

@@ -4,6 +4,7 @@ export class PaymentSituation {
   
     public name: string;
     public description: string;
+    public details: string;
     code: number;
   
     constructor(props: Omit<PaymentSituation, 'id'>, id?: string) {
