@@ -18,6 +18,7 @@ import { SQLiteEvaluationStatusRepository } from "./repositories/implementations
 import { SQLiteCountriesRepository } from "./repositories/implementations/SQLiteCountriesRepository";
 import { SQLiteStatesRepository } from "./repositories/implementations/SQLiteStatesRepository";
 import { SQLiteCitiesRepository } from "./repositories/implementations/SQLiteCitiesRepository";
+import { SQLiteRegistrationTypesRepository } from "./repositories/implementations/SQLiteRegistrationTypesRepository";
 
 const router = Router()
 
@@ -94,6 +95,15 @@ router.get('/institutions', (request, response) => {
   const instituicoes = new SQLiteInstitutionsRepository
   
   instituicoes.getAllInstitutions().then(data => {
+    response.send(data)
+  })
+});
+
+router.get('/types', (request, response) => {
+  
+  const inscricoes = new SQLiteRegistrationTypesRepository
+  
+  inscricoes.getAllRegistrationTypes().then(data => {
     response.send(data)
   })
 });
