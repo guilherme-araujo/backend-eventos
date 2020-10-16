@@ -8,6 +8,7 @@ import { createEvaluationController } from "./useCases/CreateEvaluation";
 import { linkAbstractAuthorController } from "./useCases/linkAbstractAuthor";
 import { createAuthorController } from "./useCases/CreateAuthor";
 import { createInstitutionController } from "./useCases/CreateInstitution";
+import { listStatesController} from "./useCases/ListStates";
 
 // repositórios
 import { SQLiteAuthorsRepository } from "./repositories/implementations/SQLiteAuthorsRepository";
@@ -16,7 +17,6 @@ import { loginController } from "./useCases/Login";
 import { SQLitePaymentSituationsRepository } from "./repositories/implementations/SQLitePaymentSituationsRepository";
 import { SQLiteEvaluationStatusRepository } from "./repositories/implementations/SQLiteEvaluationStatus";
 import { SQLiteCountriesRepository } from "./repositories/implementations/SQLiteCountriesRepository";
-import { SQLiteStatesRepository } from "./repositories/implementations/SQLiteStatesRepository";
 import { SQLiteCitiesRepository } from "./repositories/implementations/SQLiteCitiesRepository";
 
 const router = Router()
@@ -117,12 +117,9 @@ router.get('/countries', (request, response) => {
 });
 
 router.get('/states', (request, response) => {
-  
-  const estados = new SQLiteStatesRepository
-  
-  estados.getAllStates().then(data => {
-    response.send(data)
-  })
+
+  listStatesController.handle(request, response);
+
 });
 
 export { router }
