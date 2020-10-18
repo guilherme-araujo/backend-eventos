@@ -1,6 +1,6 @@
 import db from '../../../database/connection';
 import { IInstitutionsRepository } from '../IInstitutionsRepository';
-import { Institution } from '../../entities/Instituition';
+import { Institution } from '../../entities/Institution';
 
 export class SQLiteInstitutionsRepository implements IInstitutionsRepository {
     async save(institution: Institution): Promise<void> {

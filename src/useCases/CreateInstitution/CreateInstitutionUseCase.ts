@@ -1,6 +1,6 @@
 import { IInstitutionsRepository } from "../../repositories/IInstitutionsRepository";
 import { ICreateInstitutionRequestDTO } from "./CreateInstitutionDTO";
-import { Institution } from "../../entities/Instituition";
+import { Institution } from "../../entities/Institution";
 
 export class CreateInstitutionUseCase {
   constructor(

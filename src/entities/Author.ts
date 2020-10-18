@@ -1,4 +1,4 @@
-import { Institution } from "./Instituition";
+import { Institution } from "./Institution";
 
 export class Author {
    

@@ -1,4 +1,4 @@
-import { Institution } from "../entities/Instituition";
+import { Institution } from "../entities/Institution";
 
 export interface IInstitutionsRepository {
   save(institution: Institution): Promise<void>;

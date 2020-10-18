@@ -1,24 +1,27 @@
 import { Router } from "express";
 
-// controllers
+//CREATE
 import { createUserController } from "./useCases/CreateUser";
 import { createPaymentController } from "./useCases/CreatePayment";
 import { createAbstractController } from "./useCases/CreateAbstract";
 import { createEvaluationController } from "./useCases/CreateEvaluation";
-import { linkAbstractAuthorController } from "./useCases/linkAbstractAuthor";
 import { createAuthorController } from "./useCases/CreateAuthor";
 import { createInstitutionController } from "./useCases/CreateInstitution";
-import { listStatesController} from "./useCases/ListStates";
 
-// repositórios
-import { SQLiteAuthorsRepository } from "./repositories/implementations/SQLiteAuthorsRepository";
-import { SQLiteInstitutionsRepository } from "./repositories/implementations/SQLiteInstitutionsRepository";
+
+//LIST
+import {listAuthorsController} from "./useCases/ListAuthors";
+import {listCitiesController} from "./useCases/ListCities";
+import {listStatesController} from "./useCases/ListStates";
+import {listCountriesController} from "./useCases/ListCountries";
+import {listEvaluationStatusesController} from "./useCases/ListEvaluationStatuses";
+import {listInstitutionsController} from "./useCases/ListInstitutions";
+import {listPaymentSituationsController} from "./useCases/ListPaymentSituations";
+import {listRegistrationTypesController} from "./useCases/ListRegistrationTypes";
+
+//OTHERS
+import { linkAbstractAuthorController } from "./useCases/linkAbstractAuthor";
 import { loginController } from "./useCases/Login";
-import { SQLitePaymentSituationsRepository } from "./repositories/implementations/SQLitePaymentSituationsRepository";
-import { SQLiteEvaluationStatusRepository } from "./repositories/implementations/SQLiteEvaluationStatus";
-import { SQLiteCountriesRepository } from "./repositories/implementations/SQLiteCountriesRepository";
-import { SQLiteCitiesRepository } from "./repositories/implementations/SQLiteCitiesRepository";
-import { SQLiteRegistrationTypesRepository } from "./repositories/implementations/SQLiteRegistrationTypesRepository";
 
 const router = Router()
 
@@ -44,12 +47,7 @@ router.post('/payments', (request, response) => {
 });
 
 router.get('/situations', (request, response) => {
-  
-  const situacoes = new SQLitePaymentSituationsRepository
-  
-  situacoes.getAllPaymentSituations().then(data => {
-    response.send(data)
-  })
+  listPaymentSituationsController.handle(request, response);
 });
 
 router.post('/abstracts',(request,response)=>{
@@ -65,12 +63,7 @@ router.post('/evaluations', (request, response) => {
 });
 
 router.get('/status', (request, response) => {
-  
-  const status = new SQLiteEvaluationStatusRepository
-  
-  status.getAllEvaluationStatus().then(data => {
-    response.send(data)
-  })
+  listEvaluationStatusesController.handle(request, response);
 });
 
 router.post('/authors', (request, response) => {
@@ -78,12 +71,7 @@ router.post('/authors', (request, response) => {
 });
 
 router.get('/authors', (request, response) => {
-  
-  const autores = new SQLiteAuthorsRepository
-  
-  autores.getAllAuthors().then(data => {
-    response.send(data)
-  })
+  listAuthorsController.handle(request, response);
 });
 
 router.post('/institutions', (request, response) => {
@@ -91,45 +79,23 @@ router.post('/institutions', (request, response) => {
 });
 
 router.get('/institutions', (request, response) => {
-  
-  const instituicoes = new SQLiteInstitutionsRepository
-  
-  instituicoes.getAllInstitutions().then(data => {
-    response.send(data)
-  })
+  listInstitutionsController.handle(request, response);
 });
 
 router.get('/types', (request, response) => {
-  
-  const inscricoes = new SQLiteRegistrationTypesRepository
-  
-  inscricoes.getAllRegistrationTypes().then(data => {
-    response.send(data)
-  })
+  listRegistrationTypesController.handle(request, response);
 });
 
 router.get('/cities', (request, response) => {
-  
-  const cidades = new SQLiteCitiesRepository
-  
-  cidades.getAllCities(request.query.state as string).then(data => {
-    response.send(data)
-  })
+  listCitiesController.handle(request, response);
 });
 
 router.get('/countries', (request, response) => {
-  
-  const paises = new SQLiteCountriesRepository
-  
-  paises.getAllCountries().then(data => {
-    response.send(data)
-  })
+  listCountriesController.handle(request, response);
 });
 
 router.get('/states', (request, response) => {
-
   listStatesController.handle(request, response);
-
 });
 
 export { router }
